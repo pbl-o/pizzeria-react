@@ -1,51 +1,139 @@
-import { createContext } from "react";
+import { createContext, useEffect } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-  // token de validación de sesión (provisorio)
-  /* Las rutas están protegidas, en la medida que se acceda a ellas bajo el token pertinente,
-  se llega a los endpoits mencionados en el desafío. No obstante no da para almacenar los estados
-  al momento de ingresar las rutas directamente en la barra del browser (vía teclado) las solucione que encontré (localStorage)
-  escapan de los contenidos de la clase.
-  
-  Por ello simplemente dejaré comentado a modo de instrucciones lo que es preciso
-  para conseguir el comportamiento pedido*/
-
-  //Para observar el profile protegido, cambiar estado para false;
-  //Para observar redireccionamiento al home desde login y register dejar true;
-  const [token, setToken] = useState(true);
-
-  const logOut = () => {
-    // if (!token) return; (token null)
-
-    alert("Estamos cerrando su sesión...");
-    setToken(false);
-  };
-
-  // Dummy de validación provisorio.
-  //Colocar estas credencailes en el Login acceder al profile sin cambiar estado.
-  let dummyEmail = "email";
-  let dummyPassword = "theSuperPassword";
-
+  //
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  //
+  const [user, setUser] = useState(null);
+
+  const navigate = useNavigate();
+
+  //Actualización de token
+  const [token, setToken] = useState(() => localStorage.getItem("token"));
+
+  useEffect(() => {
+    if (token) {
+      localStorage.setItem("token", token);
+    } else {
+      localStorage.removeItem("token");
+    }
+  }, [token]);
+
+  //Método para hacer login
+  const userLogIn = async (e, email, password) => {
+    e.preventDefault();
+
+    const user = {
+      email,
+      password,
+    };
+    console.log(user);
+
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      });
+
+      const data = await response.json();
+      console.log("token is : ");
+      console.log(data.token);
+
+      if (data.token) {
+        setToken(data.token);
+        console.log(email);
+
+        alert("Sesión iniciada correctamente");
+        navigate("/profile");
+      } else {
+        alert("Error de credenciales");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //Método para registrar
+  const userRegister = async (e, newEmail, newPassword) => {
+    e.preventDefault();
+
+    const response = await fetch("http://localhost:5000/api/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        email: newEmail,
+        password: newPassword,
+      }),
+    });
+
+    const data = await response.json();
+    console.log(data);
+
+    response.ok
+      ? alert("creación de usuario exitosa")
+      : alert(data.message || "Error al registrar");
+  };
+  // método para acceder y obeneter informaciones de usuari@ específico
+  const getUserProfile = async () => {
+    if (!token) return;
+
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/me", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const data = await response.json();
+      /*console.log('the user data is:')
+      console.log(data); */
+      setUser(data);
+    } catch (error) {
+      alert("there is something wrong with your session");
+    }
+  };
+  //Método logut
+  const logOut = () => {
+    if (!token) return;
+
+    alert("Estamos cerrando su sesión...");
+    localStorage.clear();
+    setEmail("");
+    setToken(null);
+    setUser(null);
+    // console.log(email ? email : "no email");
+  };
 
   //PROVIDER
   return (
     <UserContext.Provider
       value={{
-        token,
-        setToken,
         email,
         setEmail,
         password,
         setPassword,
-        dummyEmail,
-        dummyPassword,
+        userLogIn,
         logOut,
+        getUserProfile,
+        userRegister,
+        user,
+        setUser,
+        token,
+        setToken,
       }}
     >
       {children}
