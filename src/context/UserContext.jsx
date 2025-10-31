@@ -87,7 +87,7 @@ const UserProvider = ({ children }) => {
       ? alert("creación de usuario exitosa")
       : alert(data.message || "Error al registrar");
   };
-  // método para acceder y obeneter informaciones de usuari@ específico
+  //Método para acceder y obeneter informaciones de usuari@ específico
   const getUserProfile = async () => {
     if (!token) return;
 
