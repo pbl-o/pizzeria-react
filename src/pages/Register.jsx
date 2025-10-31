@@ -1,58 +1,26 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import useInput from "../hooks/useInput";
+import { UserContext } from "../context/UserContext";
 
 //En este componente decidí controlar el rellenado de campos por medio de condiciones. En el componenet Login, está controlado por el atributo 'required'.
 
 const Register = () => {
-  //estados de input:
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+
+  const { userRegister } = useContext(UserContext);
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  //estados de error
-  const [error, setError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-
-  const handleValidation = (e) => {
-    e.preventDefault();
-
-    if (
-      password.length < 6 ||
-      password !== confirmPassword ||
-      !email.trim() ||
-      !password.trim() ||
-      !confirmPassword.trim()
-    ) {
-      setError(true);
-      password.length < 6 &&
-        setErrorMessage("Tu contraseña debe tener más de 6 caracteres");
-      password !== confirmPassword &&
-        setErrorMessage("Tu contraseña debe coincidir con la confirmación");
-      (!email.trim() || !password.trim() || !confirmPassword.trim()) &&
-        setErrorMessage("Todos los campos deben ser rellenados");
-      return;
-    }
-
-    setError(false);
-    setErrorMessage("");
-    alert("Succesfully Registered");
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
-  };
+  const newEmail = useInput("");
+  const newPassword = useInput("");
 
   return (
     <>
       <h2 className="text-center pt-3">Register</h2>
-      {error ? (
-        <p className="text-center bg-danger text-light fw-bolder border w-50 rounded mx-auto">
-          {errorMessage}
-        </p>
-      ) : (
-        ""
-      )}
+
       <form
         action=""
-        onSubmit={handleValidation}
+        onSubmit={(e) => {
+          userRegister(e, newEmail.value, newPassword.value);
+        }}
         className="border rounded py-5 mx-auto d-flex flex-column justify-conntent-center align-items-center w-50 my-4 gap-4"
       >
         {/* email inout */}
@@ -60,12 +28,9 @@ const Register = () => {
           <label htmlFor="">Email</label>
           <input
             type="text"
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
+            {...newEmail}
             className="form-control my-2"
-            value={email}
-            //required
+            required
             placeholder="Enter your email"
           />
         </div>
@@ -74,12 +39,9 @@ const Register = () => {
           <label htmlFor="">Password</label>
           <input
             type="password"
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
+            {...newPassword}
             className="form-control my-2"
-            value={password}
-            //required
+            required
             placeholder="Enter your password"
           />
         </div>
@@ -93,7 +55,7 @@ const Register = () => {
             }}
             className="form-control my-2"
             value={confirmPassword}
-            //required
+            required
             placeholder="Confirm your Password"
           />
         </div>
