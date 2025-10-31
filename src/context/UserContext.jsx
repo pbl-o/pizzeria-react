@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-  //
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);

@@ -2,10 +2,8 @@ import { useContext, useState } from "react";
 import useInput from "../hooks/useInput";
 import { UserContext } from "../context/UserContext";
 
-//En este componente decidí controlar el rellenado de campos por medio de condiciones. En el componenet Login, está controlado por el atributo 'required'.
 
 const Register = () => {
-
   const { userRegister } = useContext(UserContext);
   const [confirmPassword, setConfirmPassword] = useState("");
 
