@@ -1,6 +1,8 @@
 # Pizzería Ticcino
 
-Hito 8 de proyecto desarrollado para mostrar conocimientos de desarrollo con React. En este hito final se implementará la autenticación real con el backend utilizando JWT.
+- (Hito 8)
+
+- Proyecto desarrollado con el fin de demostrar conocimientos en React. En este hito final se implementará la autenticación real con el backend utilizando JWT.
 
 ## Tecnologías Empleadas
 
