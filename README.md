@@ -36,7 +36,7 @@ npm install
 npm run dev
 ```
 
--Una vez realizados los pasos anterioeres, la aplicación debería estar visible en "http://localhost:5173"<u>** Para asegurar una correcta visualización de contenido e información, es necesario levantar primero el servidor de backend**</u>.
+-Una vez realizados los pasos anterioeres, la aplicación debería estar visible en "http://localhost:5173" <u>**Para asegurar una correcta visualización de contenido e información, es necesario levantar primero el servidor de backend**</u>.
 
 Para acceder a dicho servidor, en caso de no tenerlo, seguir los siguientes pasos:
 
