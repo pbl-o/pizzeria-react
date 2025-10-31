@@ -1,16 +1,57 @@
-# React + Vite
+# Pizzería Ticcino
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Hito 8 de proyecto desarrollado para mostrar conocimientos de desarrollo con React. En este hito final se implementará la autenticación real con el backend utilizando JWT.
 
-Currently, two official plugins are available:
+## Tecnologías Empleadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React
+- CSS & Bootstrap
+- JavaScript
 
-## React Compiler
+## Instalación
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Instrucciones de instalación y configuración del proyecto:
 
-## Expanding the ESLint configuration
+1. Clonar repositorio:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+git clone https://github.com/pbl-o/react-router-dos.git
+```
+
+2. Acceder al directorio:
+
+```bash
+cd pizzeria-mamma-mia-h8
+```
+
+3. Instalar las dependencias:
+
+```bash
+npm install
+```
+
+4. Uso (modo desarrollo):
+
+```bash
+npm run dev
+```
+
+- La aplicación estará visible en "http://localhost:5173"<u>**Para asegurar la visualización de contenido e información es necesario levantar primero el servidor de backend**</u>.
+
+Para acceder al backend en caso de no tenerlo previamente en:
+
+
+1. Descargar o clonar repositorio "[Backend](https://github.com/pbl-o/backendpizza)"
+2. Abrir el directorio en terminal
+3. Instalar dependencias:
+   ```
+   npm install
+   ```
+4. Levantar servidor:
+
+   ```bash
+   npm run start
+   ```
+
+- Si se ha ejecutado correctamente, la consola del servidor debería mostar el siguiente mensaje: Server is running on port http://localhost:5000.
+
