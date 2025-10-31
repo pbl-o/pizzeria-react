@@ -29,6 +29,33 @@ const Cart = () => {
     );
   };
 
+  //Método para enviar carrito al backend
+  const startPayment = async () => {
+    const response = await fetch("http://localhost:5000/api/checkouts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        cartArray,
+      }),
+    });
+    const data = await response.json();
+
+    if (cartArray.length === 0) {
+      alert("Elige un producto para poder ejecutar una compra");
+      return;
+    }
+    alert("Tu compra ha sido existosa");
+    console.log("purchase: ");
+    console.log(data.message);
+    console.log(data);
+  };
+
+  /* El Método startPayment, envía el carrito por medio de la ruta /checkouts
+   */
+
   return (
     <>
       <div className="container-fluid p-1">
@@ -83,6 +110,7 @@ const Cart = () => {
                 btnText="Pagar"
                 btnColor="dark"
                 isDisabled={token ? false : true}
+                clickAction={startPayment}
               />
             </div>
           </div>
