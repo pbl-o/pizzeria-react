@@ -15,7 +15,7 @@ Instrucciones de instalación y configuración del proyecto:
 1. Clonar repositorio:
 
 ```bash
-git clone https://github.com/pbl-o/react-router-dos.git
+git clone https://github.com/pbl-o/pizzeria-react.git
 ```
 
 2. Acceder al directorio:
