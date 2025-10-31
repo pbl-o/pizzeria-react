@@ -1,15 +1,16 @@
 import { Card } from "react-bootstrap";
 import MyButton from "./Button";
-import { useNavigate } from "react-router-dom";
 import emptyAvatar from "../assets/empty.jpeg";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../context/UserContext";
 
-//Token False = Página no accesible, redirecciona al Login;
-//Token True = Página accesible;
 const Profile = () => {
-  const { logOut } = useContext(UserContext);
-  const navigate = useNavigate();
+  const { logOut, getUserProfile, user } = useContext(UserContext);
+
+  useEffect(() => {
+    getUserProfile();
+  }, []);
+
   return (
     <>
       <Card className="m-5 p-5 text-center">
@@ -18,13 +19,19 @@ const Profile = () => {
           src={emptyAvatar}
           className="w-25 mx-auto m-3"
         />
-        <Card.Text className="fw-bolder">Usuario@Reactmail.com</Card.Text>
+        <Card.Text className="fw-bolder">
+          Email : {user ? user.email : "No user"}
+        </Card.Text>
+        '
+        <Card.Text className="fw-bolder">
+          ID : {user ? user.id : "No ID"}
+        </Card.Text>
         <Card.Body>
           <MyButton
             btnColor="dark"
             btnText="Cerrar Sesión"
             clickAction={() => {
-              logOut(), navigate("/");
+              logOut();
             }}
           />
         </Card.Body>

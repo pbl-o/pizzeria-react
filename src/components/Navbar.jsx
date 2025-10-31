@@ -3,13 +3,17 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import conversor from "../utils/conversor.js";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { CartContext } from "../context/CartContext.jsx";
 import { UserContext } from "../context/UserContext.jsx";
 
 const MyNavbar = () => {
-  const { total } = useContext(CartContext);
-  const { token, logOut } = useContext(UserContext);
+  const { total, setCartArray } = useContext(CartContext);
+  const { logOut } = useContext(UserContext);
+  const token =
+    localStorage.getItem("token") != undefined
+      ? localStorage.getItem("token")
+      : null;
   const navigateNavbar = useNavigate();
 
   const setActiveClass = ({ isActive }) => (isActive ? "active" : "inactive");
@@ -42,6 +46,7 @@ const MyNavbar = () => {
                 onClick={() => {
                   if (token) {
                     logOut();
+                    setCartArray([]);
                   }
                 }}
               >
