@@ -11,11 +11,11 @@ import CartProvider from "./context/CartContext.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <CartProvider>
-      <UserProvider>
-        <BrowserRouter>
+      <BrowserRouter>
+        <UserProvider>
           <App />
-        </BrowserRouter>
-      </UserProvider>
+        </UserProvider>
+      </BrowserRouter>
     </CartProvider>
   </StrictMode>
 );

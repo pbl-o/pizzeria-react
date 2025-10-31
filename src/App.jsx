@@ -9,30 +9,11 @@ import NotFound from "./pages/NotFound.jsx";
 import Pizza from "./pages/Pizza.jsx";
 import Profile from "./components/Profile.jsx";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { UserContext } from "./context/UserContext.jsx";
 
 function App() {
   const { token } = useContext(UserContext);
-
-  /* 
-  
-Soluciones provisorias: 
-
-Login.jsx
-Para el Login, el email "almacenado" es: 'email' y la contraseña: 'theSuperPassword'
-   
- */
-
-  // UserContext.jsx / Login.jsx
-  //Para probar Login y Logout, cambiar estado token en userContext.jsx:
-  //Para observar el profile protegido, cambiar estado para false;
-  //Para observar redireccionamiento al home desde login y register mantener o cambiar para true;
-
-  //Seguimiento de token en la consola
-  useEffect(() => {
-    console.log(token);
-  }, [token]);
 
   return (
     <>
@@ -41,17 +22,17 @@ Para el Login, el email "almacenado" es: 'email' y la contraseña: 'theSuperPass
         <Route path="/" element={<Home />}></Route>
         <Route
           path="/login"
-          element={!token ? <Login /> : <Navigate to="/"  />}
+          element={!token ? <Login /> : <Navigate to="/profile" />}
         ></Route>
         <Route
           path="/register"
-          element={!token ? <Register /> : <Navigate to="/"  />}
+          element={!token ? <Register /> : <Navigate to="/" />}
         ></Route>
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/pizza/:pid" element={<Pizza />}></Route>
         <Route
           path={"/profile"}
-          element={token ? <Profile /> : <Navigate to="/login"  />}
+          element={token ? <Profile /> : <Navigate to="/login" />}
         ></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
