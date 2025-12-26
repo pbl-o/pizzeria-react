@@ -2,8 +2,8 @@
 
 - Proyecto desarrollado con el fin de demostrar conocimientos en React. En este hito final se implementará la autenticación real con el backend utilizando JWT.
 
-### "https://pizzaticcino.netlify.app/"
-### "https://backendpizza-bk.onrender.com" (backend)
+ "https://pizzaticcino.netlify.app/"
+ "https://backendpizza-bk.onrender.com" (backend)
 
 ## Tecnologías Empleadas
 
