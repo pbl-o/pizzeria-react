@@ -34,7 +34,7 @@ const UserProvider = ({ children }) => {
     console.log(user);
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/login", {
+      const response = await fetch("https://backendpizza-bk.onrender.com/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -68,7 +68,7 @@ const UserProvider = ({ children }) => {
   const userRegister = async (e, newEmail, newPassword) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:5000/api/auth/register", {
+    const response = await fetch("https://backendpizza-bk.onrender.com/api/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -92,7 +92,7 @@ const UserProvider = ({ children }) => {
     if (!token) return;
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/me", {
+      const response = await fetch("https://backendpizza-bk.onrender.com/api/auth/me", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,

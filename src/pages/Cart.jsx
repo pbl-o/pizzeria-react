@@ -31,7 +31,7 @@ const Cart = () => {
 
   //Método para enviar carrito al backend
   const startPayment = async () => {
-    const response = await fetch("http://localhost:5000/api/checkouts", {
+    const response = await fetch("https://backendpizza-bk.onrender.com/api/checkouts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
