@@ -11,7 +11,7 @@ const Home = () => {
 
   //se hace un fecth para recibir los datos de las pizzas al montar el componente.
   useEffect(() => {
-    apiFetcher("http://localhost:5000/api/pizzas");
+    apiFetcher("https://backendpizza-bk.onrender.com/api/pizzas");
   }, []);
 
   return (

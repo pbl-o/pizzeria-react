@@ -9,11 +9,10 @@ const Pizza = () => {
   let navigateHome = useNavigate();
 
   const apiFetcherDetail = async (id) => {
-    const url = 'https://backendpizza-bk.onrender.com'
     if (apiPizza.id === id) return;
 
     try {
-      const res = await fetch(`${url}/api/pizzas/${id}`);
+      const res = await fetch(`https://backendpizza-bk.onrender.com/api/pizzas/${id}`);
       const data = await res.json();
       setApiPizza(data);
     } catch (error) {
