@@ -5,7 +5,7 @@
  - "https://pizzaticcino.netlify.app/"
  - "https://backendpizza-bk.onrender.com" (backend)
 
--(El contenido puede demorar hasta 50 segundos en aperecer debido a que el servicio está aloajdo en una isntancia gratuita de render.com, aquí se utiliza para efectos de estudio).
+- (El contenido puede demorar hasta 50 segundos en aperecer debido a que el servicio está aloajdo en una isntancia gratuita de render.com, aquí se utiliza para efectos de estudio).
 
 ## Tecnologías Empleadas
 
