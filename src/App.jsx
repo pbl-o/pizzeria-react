@@ -11,6 +11,7 @@ import Profile from "./components/Profile.jsx";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "./context/UserContext.jsx";
+import Header from "./components/Header.jsx";
 
 function App() {
   const { token } = useContext(UserContext);
@@ -18,6 +19,7 @@ function App() {
   return (
     <>
       <MyNavbar />
+      <Header />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route

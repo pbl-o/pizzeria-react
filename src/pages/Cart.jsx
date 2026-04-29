@@ -4,6 +4,7 @@ import conversor from "../utils/conversor.js";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext.jsx";
 import { UserContext } from "../context/UserContext.jsx";
+import { Col } from "react-bootstrap";
 
 const Cart = () => {
   const { cartArray, setCartArray, total } = useContext(CartContext);
@@ -58,12 +59,12 @@ const Cart = () => {
 
   return (
     <>
-      <div className="container-fluid p-1">
-        <Card className="row g-1 m-2 m-md-5 p-1 p-md-4 mx-auto">
+      <Col className="container-fluid p-1 w-75">
+        <Card className="row g-3 m-2 m-md-5 p-1 p-md-4 mx-auto">
           {cartArray.map((pizza) => {
             return (
               <Card.Body
-                className="col-sm-10 col-md-12 col-lg-10 d-flex justify-content-evenly justify-content-md-around align-items-center px-3 border rounded  mx-auto"
+                className="col-sm-10 col-md-12 col-lg-10 d-flex justify-content-evenly justify-content-md-around align-items-stretch px-3 border rounded  mx-auto"
                 key={pizza.id}
               >
                 <img className="w-25 rounded" src={pizza.img} alt="" />
@@ -78,7 +79,7 @@ const Cart = () => {
 
                   <div className="d-flex align-items-center gap-2 w-25">
                     <button
-                      className="btn btn-danger fw-bolder"
+                      className="btn btn-dark fw-bolder"
                       onClick={() => {
                         updateLess(pizza.id);
                       }}
@@ -88,7 +89,7 @@ const Cart = () => {
                     <p className="fw-bolder mt-4">{pizza.count}</p>
 
                     <button
-                      className="btn btn-primary fw-bolder"
+                      className="btn btn-dark fw-bolder"
                       onClick={() => {
                         updatePlus(pizza.id);
                       }}
@@ -115,7 +116,7 @@ const Cart = () => {
             </div>
           </div>
         </Card>
-      </div>
+      </Col>
     </>
   );
 };

@@ -1,13 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Mansalva&display=swap');
+
 * {
-  font-family: "Gloria Hallelujah", cursive;
+  font-family: "Mansalva", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
 .header-bg {
   background: url("./assets/Header.jpg");
-  height: 15vh;
+  height: 20vh;
 }
 
 .header-bg p,
@@ -18,7 +19,7 @@
 .overlay {
   background-color: black;
   position: absolute;
-  height: 15vh;
+  height: 20vh;
   opacity: 0.7;
 }
 
@@ -37,4 +38,31 @@
 
 .inactive {
   color: white;
+}
+
+.pizza-icon{
+  opacity: 0;
+  transition: all .3s ease-in-out;
+}
+
+.pizza-icon:hover{
+  opacity: 1;
+  cursor: pointer;
+}
+
+
+.navbar-glass {
+  background: rgba(0, 0, 0, 0.3) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.card{
+  opacity: 1;
+  transition: all .4s ease-in-out;
+}
+
+.card:hover{
+  opacity: .9;
 }

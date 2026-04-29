@@ -20,7 +20,7 @@ const MyNavbar = () => {
   return (
     <Navbar
       expand="lg"
-      className="bg-dark w-100 d-flex justify-content-between"
+      className=" w-100 d-flex justify-content-between fixed-top navbar-glass"
       variant="dark"
     >
       <Container fluid>
