@@ -13,7 +13,7 @@ const Register = () => {
   return (
     <>
       <Col xs={10} md={6} lg={5} xl={3} className="mx-auto">
-        <h2 className="text-center pt-3">Register</h2>
+        <h2 className="text-center pt-5">Register</h2>
 
         <form
           action=""

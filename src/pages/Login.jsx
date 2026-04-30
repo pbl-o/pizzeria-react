@@ -10,6 +10,7 @@ const Login = () => {
   return (
     <>
       <Col xs={10} md={6} lg={5} xl={3} className="mx-auto py-5">
+       <h2 className="text-center pt-3">Login</h2>
         <form
           action=""
           onSubmit={(e) => {

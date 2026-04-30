@@ -17,12 +17,11 @@ const Home = () => {
 
   return (
     <>
-      
       <div className="container-fluid px-5 py-2 mb-5">
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 mx-auto">
-          {pizzaArray.map((item) => {
+          {pizzaArray.map((item, index) => {
             return (
-              <Col className="py-3">
+              <Col key={item.id} className="py-3">
                 <CardPizza
                   key={item.id}
                   name={item.name}
